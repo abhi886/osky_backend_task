@@ -11,11 +11,11 @@ function sortByTitle($a, $b) {
 
 // Sort the news data array based on title
 usort($newsData, 'sortByTitle');
-
 // Render
 echo "<div>";
 foreach($newsData as $data) {
     echo "<h2>".$data['title']."</h2>";
+    echo "<p><i>".$data['pubDate']."</i></p>";
 }
 echo "</div>";
 ;?>
