@@ -16,6 +16,7 @@ echo "<div>";
 foreach($newsData as $data) {
     echo "<h2>".$data['title']."</h2>";
     echo "<p><i>".$data['pubDate']."</i></p>";
+    echo "<p>".$data['description']."</p>";
 }
 echo "</div>";
 ;?>
