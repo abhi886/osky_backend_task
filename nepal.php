@@ -12,12 +12,10 @@ function sortByTitle($a, $b) {
 // Sort the news data array based on title
 usort($newsData, 'sortByTitle');
 
-print_r($newsData);
-
- // Display all the titles
+// Render
 echo "<div>";
-foreach($result as $data) {
-    echo $data['title'];
+foreach($newsData as $data) {
+    echo "<h2>".$data['title']."</h2>";
 }
 echo "</div>";
 ;?>
