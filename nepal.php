@@ -9,6 +9,13 @@ function sortByTitle($a, $b) {
     return strcmp($a['title'], $b['title']);
 }
 
+// Helper function to format the date
+function formatDate($date) {
+    $dateTime = new DateTime($date);
+    $formattedDate = $dateTime->format('l, jS \of F Y g:i A');
+    return $formattedDate;
+}
+
 // Sort the news data array based on title
 usort($newsData, 'sortByTitle');
 // Render
@@ -16,7 +23,7 @@ echo '<div>';
 foreach($newsData as $key => $data) {
     echo '<div style="opacity: 0;">'; // Add opacity for fade-in effect
     echo "<h2>".$data['title']."</h2>";
-    echo "<p><i>".$data['pubDate']."</i></p>";
+    echo "<p><i>".formatDate($data['pubDate'])."</i></p>";
     echo "<p>".$data['description']."</p>";
 
     // if link is present and is an array
