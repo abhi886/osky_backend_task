@@ -51,6 +51,6 @@ echo "</div>";
     newsItems.forEach((item, index) => {
         setTimeout(() => {
             item.style.opacity = 1;
-        }, index * 1000); // Adjust the delay (300ms) to control the fade-in timing
+        }, index * 300); // Adjust the delay (300ms) to control the fade-in timing
     });
 </script>
