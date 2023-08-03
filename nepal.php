@@ -17,6 +17,20 @@ foreach($newsData as $data) {
     echo "<h2>".$data['title']."</h2>";
     echo "<p><i>".$data['pubDate']."</i></p>";
     echo "<p>".$data['description']."</p>";
+
+    // if link is present and is an array
+    if (isset($data['link']) && is_array($data['link'])) {
+        $link = array_filter($data['link'], function ($item) {
+    // filter url and see if link is present
+            return filter_var($item, FILTER_VALIDATE_URL);
+        });
+        if (count($link) > 0) {
+            echo '<p><a href="' . current($link) . '" target="_blank">Read More</a></p>';
+        }
+    // if link is present and is a string
+    } elseif (isset($data['link']) && filter_var($data['link'], FILTER_VALIDATE_URL)) {
+        echo '<p><a href="' . $data['link'] . '" target="_blank">Read More</a></p>';
+    }
 }
 echo "</div>";
 ;?>
