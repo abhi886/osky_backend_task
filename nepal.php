@@ -12,8 +12,9 @@ function sortByTitle($a, $b) {
 // Sort the news data array based on title
 usort($newsData, 'sortByTitle');
 // Render
-echo "<div>";
-foreach($newsData as $data) {
+echo '<div>';
+foreach($newsData as $key => $data) {
+    echo '<div style="opacity: 0;">'; // Add opacity for fade-in effect
     echo "<h2>".$data['title']."</h2>";
     echo "<p><i>".$data['pubDate']."</i></p>";
     echo "<p>".$data['description']."</p>";
@@ -31,6 +32,18 @@ foreach($newsData as $data) {
     } elseif (isset($data['link']) && filter_var($data['link'], FILTER_VALIDATE_URL)) {
         echo '<p><a href="' . $data['link'] . '" target="_blank">Read More</a></p>';
     }
+    echo "</div>";
 }
 echo "</div>";
 ;?>
+
+
+<script>
+    // Add fade-in effect using JavaScript
+    const newsItems = document.querySelectorAll('div[style*="opacity: 0"]');
+    newsItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = 1;
+        }, index * 1000); // Adjust the delay (300ms) to control the fade-in timing
+    });
+</script>
